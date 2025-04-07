@@ -21,11 +21,16 @@ func startRepl() {
 		commandName := words[0]
 
 		command, exists := getCommands()[commandName]
-		if !exists {
+		if exists {
+			err := command.callback()
+			if err != nil {
+				fmt.Println(err)
+			}
+			continue
+		} else {
 			fmt.Println("Unknown command")
 			continue
 		}
-		command.callback()
 	}
 }
 
