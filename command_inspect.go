@@ -7,14 +7,14 @@ import (
 
 func commandInspect(cfg *config, args ...string) error {
 	if len(args) < 1 {
-		errors.New("No Pokemon given")
+		return errors.New("No Pokemon given")
 	}
 
 	key := args[0]
 
 	pokemon, exists := cfg.CaughtPokemon[key]
 	if !exists {
-		errors.New("Invalid Pokemon given")
+		return errors.New("Invalid Pokemon given")
 	}
 
 	fmt.Printf("Name: %s\n", pokemon.Name)
