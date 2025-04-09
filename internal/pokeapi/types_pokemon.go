@@ -5,26 +5,21 @@ type Pokemon struct {
 	Prev           string
 	Name           string `json:"name"`
 	BaseExperience int    `json:"base_experience"`
-	Data           struct {
-		Height    int `json:"height"`
-		Weight    int `json:"weight"`
-		Abilities []struct {
-			IsHidden bool `json:"is_hidden"`
-			Slot     int  `json:"slot"`
-			Ability  []struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"ability"`
-		} `json:"abilities"`
-		Forms []struct {
+	Height         int    `json:"height"`
+	Weight         int    `json:"weight"`
+	Stats          []struct {
+		BaseStat int `json:"base_stat"`
+		Effort   int `json:"effort"`
+		Stat     struct {
 			Name string `json:"name"`
 			URL  string `json:"url"`
-		} `json:"forms"`
-		HeldItems []struct {
-			Item []struct {
-				Name string `json:"name"`
-				URL  string `json:"url"`
-			} `json:"item"`
+		} `json:"stat"`
+	} `json:"stats"`
+	Types []struct {
+		Slot int `json:"slot"`
+		Type struct {
+			Name string `json:"name"`
+			URL  string `json:"url"`
 		}
 	}
 }
